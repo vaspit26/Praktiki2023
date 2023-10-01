@@ -1,0 +1,430 @@
+/*Vasia Pitikaki*/
+/*CSS style*/
+
+body {
+	
+  overflow-x: hidden; /* Hide horizontal scrollbar */
+}
+
+#logo{
+	
+	width: 111px;
+	height: 24px;
+	display: flex;
+	color: #276BD1;
+	font-family: Inter;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+	padding-top: 10px; /* Add padding from the top */
+  	padding-left: 10px; /* Add padding from the left */
+  	cursor: pointer;
+}
+
+#X{
+	
+	color: #000;
+	font-family: Inter;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}
+
+
+
+h1{
+	
+	text-align:center;
+	color: #000;
+	font-family: Inter;
+	font-size: 40px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}
+
+#entities_display, #result_display, input[type="file"], #input, #choose_pdf,#choose_txt,#continue_pdf{
+	
+	display: none;
+
+}
+
+#parially_check{
+	
+	margin: 0;
+  	position: absolute;
+  	left: 50%;
+  	-ms-transform: translate(-50%, -50%);
+  	transform: translate(-50%, -50%);
+}
+
+.input_buttons{
+	text-align:center;
+}
+
+#input_button{
+	width: 135px;
+	height: 64px;
+	flex-shrink: 0;
+	border-radius: 5px;
+	background: #6FA8FF;
+	border:none;
+}
+
+.button_text{
+	color: #000;
+	font-family: Inter;
+	font-size: 20px;
+	font-style: normal;
+	font-weight: 500;
+	line-height: normal;
+}
+
+.btn_back{
+	
+  	float:left;
+  	background-color: white;
+	border: none;
+	padding: 12px 16px;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.center_drop-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.drop-box {
+    margin-top: 10px;
+    width: 320px;
+    height: 240px;
+    border: 1px solid #000;
+    display: flex;
+    flex-direction: column; /* Added to make the button appear below the message */
+    align-items: center; /* Center the items horizontally */
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Styling for the message inside the drop-box */
+.drop-box .message {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Styling for the choose button label */
+.drop-box .choose-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Add a hover effect to the choose button */
+.drop-box .choose-btn:hover {
+    background-color: #0056b3;
+}
+
+.message {
+    font-size: 18px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.choose-btn {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.choose-btn:hover {
+    background-color: #0056b3;
+}
+
+
+#text-wrapper{
+	
+	margin:auto;
+	text-align:center;
+	align-items: center;
+	flex-shrink: 0;
+}
+
+/* New styles for file item and delete button */
+.file-item {
+	
+	width: 320px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border: 1px solid #000;
+    margin-bottom: 10px;
+}
+
+.delete-btn {
+	
+    background-color: #dc3545;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.tools{
+	
+	display: inline;
+	position: relative;
+	padding-left: 5px;
+	padding-right: 20px;
+	margin-top : 10px;
+	font-size: 16px;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+	
+	  position: absolute;
+	  height: 25px;
+	  width: 25px;
+	  background-color: #eee;
+	  cursor: pointer;
+}
+
+/* When the checkbox is checked, add a blue background */
+.tools input:checked ~ .checkmark {
+	
+    background-color:  #007BFF;
+}
+
+/* Modal */
+.modal {
+	
+  	display: none;
+  	width: 100%;
+  	height: 100%;
+  	background-color: rgba(0, 0, 0, 0.7);
+  	justify-content: center;
+  	align-items: center;
+  	z-index: 999;
+}
+
+.modal-content {
+	
+	position: absolute;
+	margin-left: 40%;
+	margin-top:70px;
+  	background-color: #fff;
+  	padding: 20px;
+  	border-radius: 5px;
+  	width: 300px;
+  	text-align: center;
+  	position: relative;
+}
+
+.close {
+	
+  	position: absolute;
+  	top: 10px;
+  	right: 10px;
+  	cursor: pointer;
+  	color: black;
+}
+
+#unities_submit{
+	
+	text-align: center;
+	font-size: 16px;
+	cursor: pointer;
+    border-radius: 10px;
+    width: 80px;
+	height: 35px;
+	flex-shrink: 0;
+	border-radius: 5px;
+	background: #6FA8FF;
+	border: none;
+	
+}
+
+#checkboxes{
+	
+	position: absolute;
+  	left: 56%;
+  	-ms-transform: translate(-50%, -50%);
+  	transform: translate(-50%, -50%);
+}
+
+#button_container{
+	
+	text-align: center;
+	
+}
+
+#center, .center{
+	
+	margin: 0;
+  	position: absolute;
+  	left: 50%;
+  	-ms-transform: translate(-50%, -50%);
+  	transform: translate(-50%, -50%);
+}
+
+#mySubmit{
+	
+	text-align: center;
+	font-size: 16px;
+	cursor: pointer;
+    border-radius: 10px;
+    width: 190px;
+	height: 60px;
+	flex-shrink: 0;
+	border-radius: 5px;
+	background: #6FA8FF;
+	border: none;
+}
+
+#entities_recognized{
+	
+	display:none;
+	text-align:center;
+	font-weight:bold;
+}
+
+.centered-container {
+	
+  display: flex;
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  height: 100%; /* Set the container to take up the full height of the viewport */
+}
+
+#output_container {
+	
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #000; /* Add your desired border style here */
+  width: 400px; /* Set your desired fixed width for the box in the x-axis */
+  max-width: 100%; /* Allow the box to take up full width on smaller screens */
+}
+
+#given_input {
+	
+  flex: 1; /* This will make the paragraph take up all available vertical space */
+}
+
+#extract_button{
+	
+	float:right;
+	display:flex;
+	margin-right:100px;
+}
+
+#extract_csv{
+	
+	border: none;
+	flex-shrink: 0;
+	background-color:white;
+	width: 25px; /* Set the width to match the SVG's width */
+  	height: 25px; /* Set the height to match the SVG's height */
+  	outline: none;
+}
+
+#extract_pdf{
+	
+	margin-left:10px;
+	border:none;
+	width: 25px;
+	height: 25px;
+	flex-shrink: 0;
+	background-color:white;
+	outline: none;
+}
+
+#container_photo{
+	
+	display: flex;
+  	flex-direction: column;
+  	width: 600px; /* Set your desired fixed width for the box in the x-axis */
+  	max-width: 100%; /* Allow the box to take up full width on smaller screens */
+	display:none;
+}
+
+.content{
+	
+	text-align:center;
+}
+
+#previous{
+	
+	display: none;
+	border: none;
+	padding: 12px 16px;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.prev_back{
+	
+	margin-top: 200px;
+	border: none;
+	padding: 12px 16px;
+	font-size: 16px;
+	cursor: pointer;
+	
+}
+
+#next{
+	
+	display:none;
+	border: none;
+	padding: 12px 16px;
+	font-size: 16px;
+	cursor: pointer;
+}
+
+.photocontainer {
+	
+  	width: 300px; 
+ 	height: 300px; 
+  	overflow: hidden; 
+}
+
+#image{
+	
+	text-align:center;
+	
+}
+
+#resource{
+	
+	font-weight: bold;
+}
+
+#entity_name{
+	
+	font-weight: bold;
+	border-bottom: 1px solid #000;
+}
+
+#text{
+	
+	text-align:center;
+}
+
+img{
+	
+	max-width: 100%; 
+  	max-height: 100%; 
+ 	 height: auto; 
+}

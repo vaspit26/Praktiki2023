@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+
+<!--Vasia Pitikaki
+html code-->
+
+<html lang="en">
+
+    <head>
+        
+        <!--Define the author of web page-->
+        <meta name="author" content="Vasia Pitikaki">
+
+        <!--Set the viewport to make my website look good on all devices-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!--Set the title of the window-->
+        <title>EnXtractify</title>
+        <link rel="shortcut icon" href="EnXtractify.png">
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
+        
+         
+		
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        
+        <!-- Add icon library -->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        
+        <!--Link my css and js code -->
+        
+        <link href="entity_extraction.css" rel="stylesheet" type="text/css">
+		
+        <script src="entity_extraction.js"></script>
+        <script src="extract_result.js"></script>
+        <script src="entity_extraction_pdf_input.js"></script>
+
+    </head>
+    <body>
+    	<div id="logo" onclick="input_format()">
+    		En<div id="X">X</div>tractify
+    	</div>
+    	<div id="initial_page">
+            <br>
+        	<h1>Choose input type</h1>
+            <br>
+            <div class="input_buttons">
+            	<button id="input_button" onclick="pdf_input()"><div id="button_text">PDF</div></button>
+                <button id="input_button" onclick="text_input()"><div id="button_text">Text</div></button>
+            </div>
+                
+		</div>
+		
+		<div id="input">
+		
+			<br>
+			
+			<button class="btn_back" onclick="input_format()">
+				<svg xmlns="http://www.w3.org/2000/svg" width="45" height="43" viewBox="0 0 45 43" fill="none">
+  					<path d="M45 22.9062H5.49316L22.7856 40.1987L20.8081 42.1763L0.131836 21.5L20.8081 0.82373L22.7856 2.80127L5.49316 20.0938H45V22.9062Z" fill="#6FA8FF"/>
+				</svg>
+			</button>
+			
+			<!--  Choose PDF -->
+			
+			<div id="choose_pdf">
+			    <div class="container">
+			        <div class="center_drop-box">
+			            <div class="drop-box" id="dropBox">
+			                <br>
+			                <span class="message">Drag files here or</span>
+			                <label for="fileInput" class="choose-btn">Choose your files</label>
+			                <input type="file" id="fileInput" accept="application/pdf" style="display: none;">
+			            </div>
+			        </div>
+			    </div>
+			    <div class="container">
+			        <div class="center_drop-box">
+			            <div id="fileContainer"></div>
+			        </div>
+			    </div>
+			
+			    <br>
+			
+			    <div id="button_container">
+			        <button id="mySubmit" onclick="PDF_Handler()">Show PDF </button>
+			    </div>
+			</div>
+			
+			<!--  Choose PDF  -->
+			
+	        <!-- Text Input -->
+	        <div id = "choose_txt">
+		        <div id="text-wrapper">
+		            <textarea name="text" class="input-word" id="textSearch" rows="10" cols="50" placeholder="Insert text ..."></textarea>
+		        </div>
+		        <br><br>
+		        <!-- Text Input -->
+		        <div class="col" id="input_things">
+				    <div class="row" id="checkboxes">
+				    	<input type="checkbox" id="tool0"  value="MyConfiguration" onclick="set_tools(0)">
+				        <label class="tools">My Configuration</label>
+				        <input type="checkbox" id="tool1" value="DBpedia" onclick="set_tools(1)">
+				        <label class="tools">DBpedia Spotlight</label>
+				        <input type="checkbox" id="tool2"  value="WAT" onclick="set_tools(2)">
+				        <label class="tools">WAT</label>
+				    </div>
+					    <br>
+					    <br>
+					 <div id="button_container">
+					    <button id="mySubmit" onclick="search()">Search for Entities</button>
+					</div>
+				</div>
+			</div>
+			<div id= "continue_pdf">
+				<div id="text-wrapper">
+		            <textarea name="text" class="input-word" id="textSearch2" rows="10" cols="50" ></textarea>
+		        </div>
+		        <br>
+		        <div class="col" id="input_things">
+				    <div class="row" id="checkboxes">
+				    	<input type="checkbox" id="tool01" value="MyConfiguration" onclick="set_tools0(0)">
+				        <label class="tools">My Configuration</label>
+				        <input type="checkbox" id="tool11" value="DBpedia" onclick="set_tools0(1)">
+				        <label class="tools">DBpedia Spotlight</label>
+				        <input type="checkbox" id="tool21" value="WAT" onclick="set_tools0(2)">
+				        <label class="tools">WAT</label>
+				    </div>
+				    <br><br>
+					<div id="partially_check" class="center">
+						<input type="checkbox" id="unitycheck" onclick="openModal()">
+						<label for="showPopup">Search in units</label>
+					</div>
+					<br><br>
+					<div id="button_container">
+					    <button id="mySubmit" onclick="search()">Search for Entities</button>
+					</div>	
+				</div>
+			</div>
+			
+			<div id="myModal" class="modal">
+			  <div class="modal-content">
+			    <span class="close" onclick="closeModal()">&times;</span>
+			    <h4>Select the unities to check in</h4>
+			    <form id="popupForm">
+			      <textarea id="info" name="info" rows="4" cols="30"></textarea>
+			      <br>
+			      <button type="button" id="unities_submit" onclick="submitUnities()"> Submit</button>
+			    </form>
+			  </div>
+			</div>
+	  
+	  	</div>             
+		<!-- Recognized Entities -->
+	    
+	    <br>        
+		<div id="entities_recognized">Recognized Entities :</div>
+		
+		<br>
+			
+	    <!-- Recognized Entities -->
+	                
+	    <!-- Text Result -->
+	
+		<div id="result_display">
+		    <div class="centered-container">
+				<div id="output_container">
+					<p id="given_input"></p>
+				</div>
+			</div>	    
+			<br>
+			    
+			<div id="extract_button">Extract as :
+			    
+				<button id="extract_csv" onclick="extract_csv()">
+					<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+  						<path d="M22.5 5.83333H23.3333V5.48833L23.09 5.24333L22.5 5.83333ZM17.5 0.833333L18.09 0.243333L17.845 0H17.5V0.833333ZM10.8333 10.8333V10H10V10.8333H10.8333ZM10.8333 14.1667H10V15H10.8333V14.1667ZM14.1667 14.1667H15V13.3333H14.1667V14.1667ZM14.1667 17.5V18.3333H15V17.5H14.1667ZM17.5 15.8333H16.6667V16.1783L16.91 16.4233L17.5 15.8333ZM19.1667 17.5L18.5767 18.09L19.1667 18.6783L19.7567 18.09L19.1667 17.5ZM20.8333 15.8333L21.4233 16.4233L21.6667 16.1783V15.8333H20.8333ZM4.16667 10.8333V10H3.33334V10.8333H4.16667ZM4.16667 17.5H3.33334V18.3333H4.16667V17.5ZM3.33334 8.33333V2.5H1.66667V8.33333H3.33334ZM21.6667 5.83333V8.33333H23.3333V5.83333H21.6667ZM4.16667 1.66667H17.5V0H4.16667V1.66667ZM16.91 1.42333L21.91 6.42333L23.09 5.24333L18.09 0.243333L16.91 1.42333ZM3.33334 2.5C3.33334 2.27899 3.42114 2.06702 3.57742 1.91074C3.7337 1.75446 3.94566 1.66667 4.16667 1.66667V0C3.50363 0 2.86775 0.263392 2.3989 0.732233C1.93006 1.20107 1.66667 1.83696 1.66667 2.5H3.33334ZM1.66667 20V22.5H3.33334V20H1.66667ZM4.16667 25H20.8333V23.3333H4.16667V25ZM23.3333 22.5V20H21.6667V22.5H23.3333ZM20.8333 25C21.4964 25 22.1323 24.7366 22.6011 24.2678C23.0699 23.7989 23.3333 23.163 23.3333 22.5H21.6667C21.6667 22.721 21.5789 22.933 21.4226 23.0893C21.2663 23.2455 21.0544 23.3333 20.8333 23.3333V25ZM1.66667 22.5C1.66667 23.163 1.93006 23.7989 2.3989 24.2678C2.86775 24.7366 3.50363 25 4.16667 25V23.3333C3.94566 23.3333 3.7337 23.2455 3.57742 23.0893C3.42114 22.933 3.33334 22.721 3.33334 22.5H1.66667ZM15 10H10.8333V11.6667H15V10ZM10 10.8333V14.1667H11.6667V10.8333H10ZM10.8333 15H14.1667V13.3333H10.8333V15ZM13.3333 14.1667V17.5H15V14.1667H13.3333ZM14.1667 16.6667H10V18.3333H14.1667V16.6667ZM16.6667 10V15.8333H18.3333V10H16.6667ZM16.91 16.4233L18.5767 18.09L19.7567 16.91L18.09 15.2433L16.91 16.4233ZM19.7567 18.09L21.4233 16.4233L20.2433 15.2433L18.5767 16.91L19.7567 18.09ZM21.6667 15.8333V10H20V15.8333H21.6667ZM8.33334 10H4.16667V11.6667H8.33334V10ZM3.33334 10.8333V17.5H5.00001V10.8333H3.33334ZM4.16667 18.3333H8.33334V16.6667H4.16667V18.3333Z" fill="#007A14"/>
+					</svg>
+				</button>
+				<button id="extract_pdf" onclick="extract_pdf()">
+					  <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+						<path d="M4.16667 10.8333V10H3.33334V10.8333H4.16667ZM10.8333 10.8333V10H10V10.8333H10.8333ZM10.8333 17.5H10V18.3333H10.8333V17.5ZM22.5 5.83333H23.3333V5.48833L23.09 5.24333L22.5 5.83333ZM17.5 0.833333L18.09 0.243333L17.845 0H17.5V0.833333ZM4.16667 11.6667H5.83334V10H4.16667V11.6667ZM5.00001 18.3333V14.1667H3.33334V18.3333H5.00001ZM5.00001 14.1667V10.8333H3.33334V14.1667H5.00001ZM5.83334 13.3333H4.16667V15H5.83334V13.3333ZM6.66667 12.5C6.66667 12.721 6.57887 12.933 6.42259 13.0893C6.26631 13.2455 6.05435 13.3333 5.83334 13.3333V15C6.49638 15 7.13226 14.7366 7.60111 14.2678C8.06995 13.7989 8.33334 13.163 8.33334 12.5H6.66667ZM5.83334 11.6667C6.05435 11.6667 6.26631 11.7545 6.42259 11.9107C6.57887 12.067 6.66667 12.279 6.66667 12.5H8.33334C8.33334 11.837 8.06995 11.2011 7.60111 10.7322C7.13226 10.2634 6.49638 10 5.83334 10V11.6667ZM10 10.8333V17.5H11.6667V10.8333H10ZM10.8333 18.3333H12.5V16.6667H10.8333V18.3333ZM15 15.8333V12.5H13.3333V15.8333H15ZM12.5 10H10.8333V11.6667H12.5V10ZM15 12.5C15 11.837 14.7366 11.2011 14.2678 10.7322C13.7989 10.2634 13.163 10 12.5 10V11.6667C12.721 11.6667 12.933 11.7545 13.0893 11.9107C13.2455 12.067 13.3333 12.279 13.3333 12.5H15ZM12.5 18.3333C13.163 18.3333 13.7989 18.0699 14.2678 17.6011C14.7366 17.1323 15 16.4964 15 15.8333H13.3333C13.3333 16.0543 13.2455 16.2663 13.0893 16.4226C12.933 16.5789 12.721 16.6667 12.5 16.6667V18.3333ZM16.6667 10V18.3333H18.3333V10H16.6667ZM17.5 11.6667H21.6667V10H17.5V11.6667ZM17.5 15H20V13.3333H17.5V15ZM3.33334 8.33333V2.5H1.66667V8.33333H3.33334ZM21.6667 5.83333V8.33333H23.3333V5.83333H21.6667ZM4.16667 1.66667H17.5V0H4.16667V1.66667ZM16.91 1.42333L21.91 6.42333L23.09 5.24333L18.09 0.243333L16.91 1.42333ZM3.33334 2.5C3.33334 2.27899 3.42114 2.06702 3.57742 1.91074C3.7337 1.75446 3.94566 1.66667 4.16667 1.66667V0C3.50363 0 2.86775 0.263392 2.3989 0.732233C1.93006 1.20107 1.66667 1.83696 1.66667 2.5H3.33334ZM1.66667 20V22.5H3.33334V20H1.66667ZM4.16667 25H20.8333V23.3333H4.16667V25ZM23.3333 22.5V20H21.6667V22.5H23.3333ZM20.8333 25C21.4964 25 22.1323 24.7366 22.6011 24.2678C23.0699 23.7989 23.3333 23.163 23.3333 22.5H21.6667C21.6667 22.721 21.5789 22.933 21.4226 23.0893C21.2663 23.2455 21.0544 23.3333 20.8333 23.3333V25ZM1.66667 22.5C1.66667 23.163 1.93006 23.7989 2.3989 24.2678C2.86775 24.7366 3.50363 25 4.16667 25V23.3333C3.94566 23.3333 3.7337 23.2455 3.57742 23.0893C3.42114 22.933 3.33334 22.721 3.33334 22.5H1.66667Z" fill="#D22626"/>
+					</svg>
+				</button>
+			</div>
+			
+			<br>
+			<br>
+	
+		</div>
+		        	
+		<!-- Text Result -->
+		        	
+		<!-- Entities Result -->
+		<div class="centered-container">
+			<div id="container_photo">
+				<div class="container">
+					 <div class="row">
+						<div id="previous" class="col">
+							<button class="prev_back" onclick="prevSlide()">
+								<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+  									<path d="M16.25 23.75L18 21.875L8.75 12.5L18 3.125L16.25 1.25L5 12.5L16.25 23.75Z" fill="black"/>
+								</svg>
+							</button>
+						</div>
+						<div class="col-8">
+							<div class="row,content">
+								<br>
+								<div class="photocontainer">
+									<div id="image"></div>
+								</div>
+								<br>
+								<div id="resource" class="center"></div>
+								<br>
+								<div id="entity_name" class="center"></div>
+								<br>
+					        	<div id="text"></div>
+					        	<br>
+				        	</div>
+						</div>
+						<div id="next" class="col">
+							<button class="prev_back" onclick="nextSlide()">
+								<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25" fill="none">
+  									<path d="M8.75 1.25L7 3.125L16.25 12.5L7 21.875L8.75 23.75L20 12.5L8.75 1.25Z" fill="black"/>
+								</svg>
+							</button>					
+						</div> 
+					</div>
+				</div>
+			</div>
+		</div>        	
+		<!-- Entities Result -->
+		
+	</body>
+</html>
+		
